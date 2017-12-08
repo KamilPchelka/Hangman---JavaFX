@@ -1,0 +1,44 @@
+.menu-button {
+    -fx-background-color: aqua;
+    -fx-background-radius: 30;
+}
+
+.menu-button:hover, .home_button:hover, .sound_button:hover, .help_button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-text-fill: #ffffff;
+}
+
+.home_button {
+    -fx-background-image: url('/images/home.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 80%;
+    -fx-background-color: transparent;
+
+}
+
+.letter_button {
+}
+
+.sound_button {
+@include . home_button;
+    -fx-background-image: url('/images/music.png');
+}
+
+.help_button {
+@include . home_button;
+    -fx-background-image: url('/images/help.png');
+
+}
+
+.main_menu {
+    /*    -fx-background-image: url("images/codecool.png");
+        -fx-background-color: white;*/
+    -fx-background-image: url("/resources/images/codecool.png");
+    -fx-background-repeat: stretch;
+    -fx-background-size: 900 506;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
+}
+
+

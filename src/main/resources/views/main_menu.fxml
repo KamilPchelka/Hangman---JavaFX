@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" styleClass="main_menu"
+            stylesheets="@../css/Hangman.css" xmlns="http://javafx.com/javafx/8.0.121">
+    <top>
+        <Label alignment="CENTER" prefHeight="72.0" prefWidth="600.0" text="H A N G M A N"
+               BorderPane.alignment="CENTER">
+            <font>
+                <Font name="Serif Bold" size="60.0"/>
+            </font>
+        </Label>
+    </top>
+    <center>
+        <VBox prefHeight="266.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="playButton" mnemonicParsing="false" onAction="#handlePlayButtonEvents" prefHeight="79.0"
+                        prefWidth="213.0" styleClass="menu-button" stylesheets="@../css/Hangman.css" text="PLAY"
+                        textOverrun="LEADING_WORD_ELLIPSIS">
+                    <font>
+                        <Font name="FreeSans Bold" size="34.0"/>
+                    </font>
+                    <opaqueInsets>
+                        <Insets/>
+                    </opaqueInsets>
+                    <VBox.margin>
+                        <Insets top="10.0"/>
+                    </VBox.margin>
+                </Button>
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="213.0"
+                        styleClass="menu-button" stylesheets="@../css/Hangman.css" text="SCORES"
+                        textOverrun="LEADING_WORD_ELLIPSIS">
+                    <font>
+                        <Font name="FreeSans Bold" size="34.0"/>
+                    </font>
+                </Button>
+                <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="213.0"
+                        styleClass="menu-button" stylesheets="@../css/Hangman.css" text="CREDITS"
+                        textOverrun="LEADING_WORD_ELLIPSIS">
+                    <font>
+                        <Font name="FreeSans Bold" size="34.0"/>
+                    </font>
+                </Button>
+                <Button fx:id="quitButton" layoutX="10.0" layoutY="89.0" mnemonicParsing="false"
+                        onAction="#handleQuitButtonEvents" prefHeight="79.0" prefWidth="200.0" styleClass="menu-button"
+                        stylesheets="@../css/Hangman.css" text="QUIT" textOverrun="LEADING_WORD_ELLIPSIS">
+                    <font>
+                        <Font name="FreeSans Bold" size="34.0"/>
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </center>
+    <left>
+        <Pane prefHeight="300.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="204.0" fitWidth="238.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/codecool.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </left>
+    <right>
+        <Pane prefHeight="300.0" prefWidth="300.0" styleClass="main_menu" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="237.0" fitWidth="376.0" layoutX="48.0" layoutY="55.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <image>
+                        <Image url="@../images/handman_main_menu_image.png"/>
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+    </right>
+    <bottom>
+        <HBox prefHeight="69.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="helpButton" prefHeight="64.0" prefWidth="64.0" styleClass="help_button"
+                        stylesheets="@../css/Hangman.css"/>
+                <Button fx:id="soundButton" prefHeight="64.0" prefWidth="64.0" styleClass="sound_button"
+                        stylesheets="@../css/Hangman.css"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>
