@@ -5,10 +5,10 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pl.kamilpchelka.codecool.hangman.dao.CapitalsRepository;
 import pl.kamilpchelka.codecool.hangman.dependencyinjection.CapitalsRepositoryInjector;
 import pl.kamilpchelka.codecool.hangman.dependencyinjection.PlayerInjector;
 import pl.kamilpchelka.codecool.hangman.enumerations.GameState;
-import pl.kamilpchelka.codecool.hangman.repositories.CapitalsRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,22 +33,39 @@ public class GameImpl implements Game {
 
     @Override
     public GameState processUserAnswerAndReturnGameState(String answer) {
-        if (!isAnswerCorrectAndReplaceLabelText(answer)) {
-            player.setHealth(player.getHealth() - 1);
-            labelWithHealth.setText(String.valueOf(player.getHealth()));
-            showNextHangmanPart();
-
-            if (player.getHealth() == HEALTH_VALUE_FOR_HINT) {
-                labelWithCountryName.setText("Country: " + capital.getCountryName());
+        player.incrementGuessingTries();
+        if (answer.length() == 1) {
+            if (!isAnswerCorrectAndReplaceLabelText(answer)) {
+                player.setHealth(player.getHealth() - 1);
+                showNextHangmanPart();
+            } else {
+                player.incrementCorrectTries();
             }
 
+        } else if (answer.length() > 1) {
+            if (capital.getCapitalName().equalsIgnoreCase(answer)) {
+                labelWithCapitalName.setText(capital.getCapitalName());
+                player.incrementCorrectTries();
+                return GameState.USER_WIN;
+            } else {
+                showNextHangmanPart();
+                showNextHangmanPart();
+                if (player.getHealth() == 2) player.setHealth(0);
+                else player.setHealth(player.getHealth() - 2);
+            }
         }
 
+        labelWithHealth.setText(String.valueOf(player.getHealth()));
+
+        if (player.getHealth() == HEALTH_VALUE_FOR_HINT) {
+            labelWithCountryName.setText("Country: " + capital.getCountryName());
+        }
         if (isUserLose()) {
             return GameState.USER_LOSE;
         } else if (isUserWon()) {
-            return GameState.USER_WON;
+            return GameState.USER_WIN;
         }
+
 
         return GameState.GAME_STILL_RUNNING;
 

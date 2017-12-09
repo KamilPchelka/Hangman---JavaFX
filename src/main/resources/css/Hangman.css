@@ -3,13 +3,22 @@
     -fx-background-radius: 30;
 }
 
-.menu-button:hover, .home_button:hover, .sound_button:hover, .help_button:hover {
+.menu-button:hover, .home_button:hover, .sound_button:hover, .help_button:hover, .try_again_button:hover {
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
     -fx-text-fill: #ffffff;
 }
 
 .home_button {
     -fx-background-image: url('/images/home.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: 80%;
+    -fx-background-color: transparent;
+
+}
+
+.try_again_button {
+    -fx-background-image: url("/images/try_again.png");
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
     -fx-background-size: 80%;

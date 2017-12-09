@@ -1,4 +1,4 @@
-package pl.kamilpchelka.codecool.hangman.repositories;
+package pl.kamilpchelka.codecool.hangman.dao;
 
 import pl.kamilpchelka.codecool.hangman.dependencyinjection.CapitalInjector;
 import pl.kamilpchelka.codecool.hangman.models.Capital;

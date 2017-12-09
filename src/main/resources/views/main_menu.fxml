@@ -86,7 +86,14 @@
                 <Button fx:id="helpButton" prefHeight="64.0" prefWidth="64.0" styleClass="help_button"
                         stylesheets="@../css/Hangman.css"/>
                 <Button fx:id="soundButton" prefHeight="64.0" prefWidth="64.0" styleClass="sound_button"
-                        stylesheets="@../css/Hangman.css"/>
+                        stylesheets="@../css/Hangman.css">
+                    <padding>
+                        <Insets left="10.0"/>
+                    </padding>
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </Button>
             </children>
         </HBox>
     </bottom>

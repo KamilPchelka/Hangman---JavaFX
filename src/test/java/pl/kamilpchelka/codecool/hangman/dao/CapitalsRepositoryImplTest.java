@@ -1,4 +1,4 @@
-package pl.kamilpchelka.codecool.hangman.repositories;
+package pl.kamilpchelka.codecool.hangman.dao;
 
 
 import org.junit.Test;

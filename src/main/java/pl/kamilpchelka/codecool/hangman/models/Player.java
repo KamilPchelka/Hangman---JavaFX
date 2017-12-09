@@ -10,9 +10,23 @@ public interface Player {
 
     void setName(String name);
 
-    int getScore();
+    double getScore();
 
-    void setScore(int score);
+    void setScore(double score);
+
+    void incrementGuessingTries();
+
+    void incrementCorrectTries();
+
+    int getTime();
+
+    void setTime(int time);
+
+    int getGuessingTries();
+
+    void setGuessingTries(int guessingTries);
+
+    int getCorrectTries();
 
 
 }

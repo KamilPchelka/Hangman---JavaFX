@@ -15,7 +15,11 @@
                 <Button fx:id="helpButton" prefHeight="64.0" prefWidth="64.0" styleClass="help_button"
                         stylesheets="@../css/Hangman.css"/>
                 <Button fx:id="soundButton" prefHeight="64.0" prefWidth="64.0" styleClass="sound_button"
-                        stylesheets="@../css/Hangman.css"/>
+                        stylesheets="@../css/Hangman.css">
+                    <HBox.margin>
+                        <Insets left="10.0"/>
+                    </HBox.margin>
+                </Button>
                 <Pane prefHeight="107.0" prefWidth="244.0"/>
                 <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -289,7 +293,8 @@
                                 <Font size="26.0"/>
                             </font>
                         </Button>
-                        <Button id="letter" layoutX="79.0" layoutY="10.0" mnemonicParsing="false" prefHeight="49.0"
+                        <Button id="letter" fx:id="entireWordButton" layoutX="79.0" layoutY="10.0"
+                                mnemonicParsing="false" onAction="#handleEntireWordButton" prefHeight="49.0"
                                 prefWidth="232.0"
                                 style="-fx-background-color: white; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                                 styleClass="letter_button" text="Type entire word">
