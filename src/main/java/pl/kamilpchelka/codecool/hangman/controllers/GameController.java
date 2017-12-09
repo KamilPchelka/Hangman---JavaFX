@@ -40,8 +40,8 @@ public class GameController {
     public Pane hangmanPane;
     @FXML
     public Label labelWithCapitalName, labelWithCountryName, labelWithHealth, labelWithTime;
-    Task<Void> timerTask;
     public int timerSeconds;
+    Task<Void> timerTask;
     private MainMenuController mainMenuController;
     private Stage stage;
     private Game game;

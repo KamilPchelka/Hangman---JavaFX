@@ -42,6 +42,17 @@ public class MainMenuController {
 
     }
 
+    public void handleScoresButtonEvents() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/credits_and_leaderboard.fxml"));
+        new CreditsLeaderBoardController(loader, stage, this, false);
+
+    }
+
+    public void handleCreditsButtonEvents() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("views/credits_and_leaderboard.fxml"));
+        new CreditsLeaderBoardController(loader, stage, this, true);
+    }
+
     public void handleQuitButtonEvents() {
         stage.close();
     }

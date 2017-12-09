@@ -6,10 +6,9 @@ import pl.kamilpchelka.codecool.hangman.dependencyinjection.PlayerInjector;
 import pl.kamilpchelka.codecool.hangman.models.Player;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -25,9 +24,8 @@ public class LeaderBoardImpl implements LeaderBoard {
     private List<Player> players = new ArrayList<>();
 
     private void saveData() {
-        Path path = Paths.get(getClass().getClassLoader().getResource("scores.txt").getPath());
-        log.info(path.toString());
-        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
+        File file = new File("scores.txt");
+        try (BufferedWriter bufferedWriter = Files.newBufferedWriter(file.toPath(), StandardOpenOption.APPEND)) {
             for (Player player : players) {
                 String line = String.format("%s,%s,%s,%s", player.getName(), player.getScore(), player.getGuessingTries(), player.getTime());
                 bufferedWriter.write(line + "\n");
@@ -39,8 +37,8 @@ public class LeaderBoardImpl implements LeaderBoard {
     }
 
     private void loadData() {
-        Path path = Paths.get(getClass().getClassLoader().getResource("scores.txt").getPath());
-        try (Stream<String> lines = Files.lines(path)) {
+        File file = new File("scores.txt");
+        try (Stream<String> lines = Files.lines(file.toPath())) {
             players = lines.map(line -> {
                 String[] attributes = line.split(",");
                 Player player = PlayerInjector.get();

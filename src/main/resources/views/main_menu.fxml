@@ -33,16 +33,16 @@
                         <Insets top="10.0"/>
                     </VBox.margin>
                 </Button>
-                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="213.0"
-                        styleClass="menu-button" stylesheets="@../css/Hangman.css" text="SCORES"
-                        textOverrun="LEADING_WORD_ELLIPSIS">
+                <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleScoresButtonEvents"
+                        prefHeight="79.0" prefWidth="213.0" styleClass="menu-button" stylesheets="@../css/Hangman.css"
+                        text="SCORES" textOverrun="LEADING_WORD_ELLIPSIS">
                     <font>
                         <Font name="FreeSans Bold" size="34.0"/>
                     </font>
                 </Button>
-                <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="213.0"
-                        styleClass="menu-button" stylesheets="@../css/Hangman.css" text="CREDITS"
-                        textOverrun="LEADING_WORD_ELLIPSIS">
+                <Button layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleCreditsButtonEvents"
+                        prefHeight="79.0" prefWidth="213.0" styleClass="menu-button" stylesheets="@../css/Hangman.css"
+                        text="CREDITS" textOverrun="LEADING_WORD_ELLIPSIS">
                     <font>
                         <Font name="FreeSans Bold" size="34.0"/>
                     </font>

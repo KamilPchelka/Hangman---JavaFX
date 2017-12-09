@@ -7,8 +7,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pl.kamilpchelka.codecool.hangman.dao.CapitalsRepository;
 import pl.kamilpchelka.codecool.hangman.dependencyinjection.CapitalsRepositoryInjector;
+import pl.kamilpchelka.codecool.hangman.dependencyinjection.MusicPlayerInjector;
 import pl.kamilpchelka.codecool.hangman.dependencyinjection.PlayerInjector;
 import pl.kamilpchelka.codecool.hangman.enumerations.GameState;
+import pl.kamilpchelka.codecool.hangman.utils.MusicPlayer;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,42 +18,52 @@ import java.util.Random;
 
 public class GameImpl implements Game {
 
-    public static final int HEALTH_VALUE_FOR_HINT = 1;
+    private static final int AMOUNT_OF_HEALTH_TO_DECREASE_AFTER_WRONG_LETTER = 1;
+    private static final int MINIMUM_ANSWER_LENGTH = 1;
+    public static final int HEALTH_VALUE_FOR_HINT = MINIMUM_ANSWER_LENGTH;
     private static final Logger log = LoggerFactory.getLogger(GameImpl.class);
     private static final int HEALTH = 10;
+    private static final int USER_HEALTH_WHEN_REQUIRED_TO_LOSE_THE_GAME = 0;
+    private static final int AMOUNT_OF_HEALTH_TO_DECREASE_AFTER_WRONG_WORD = 2;
     private Player player;
     private Capital capital;
     private Label labelWithCountryName;
     private Label labelWithCapitalName;
     private Label labelWithHealth;
     private ObservableList<Node> children;
+    private MusicPlayer musicPlayer;
 
     public GameImpl() {
         setPlayer(null);
         setCapital(null);
+        this.musicPlayer = MusicPlayerInjector.get();
     }
 
     @Override
     public GameState processUserAnswerAndReturnGameState(String answer) {
         player.incrementGuessingTries();
-        if (answer.length() == 1) {
+        if (answer.length() == MINIMUM_ANSWER_LENGTH) {
             if (!isAnswerCorrectAndReplaceLabelText(answer)) {
-                player.setHealth(player.getHealth() - 1);
+                player.setHealth(player.getHealth() - AMOUNT_OF_HEALTH_TO_DECREASE_AFTER_WRONG_LETTER);
                 showNextHangmanPart();
+                musicPlayer.playBadAnswerMusic();
             } else {
                 player.incrementCorrectTries();
+                musicPlayer.playCorrectAnswerMusic();
             }
 
-        } else if (answer.length() > 1) {
+        } else if (answer.length() > MINIMUM_ANSWER_LENGTH) {
             if (capital.getCapitalName().equalsIgnoreCase(answer)) {
                 labelWithCapitalName.setText(capital.getCapitalName());
                 player.incrementCorrectTries();
+                musicPlayer.playCorrectAnswerMusic();
                 return GameState.USER_WIN;
             } else {
                 showNextHangmanPart();
                 showNextHangmanPart();
                 if (player.getHealth() == 2) player.setHealth(0);
-                else player.setHealth(player.getHealth() - 2);
+                else player.setHealth(player.getHealth() - AMOUNT_OF_HEALTH_TO_DECREASE_AFTER_WRONG_WORD);
+                musicPlayer.playCorrectAnswerMusic();
             }
         }
 
@@ -87,7 +99,7 @@ public class GameImpl implements Game {
     }
 
     public boolean isUserLose() {
-        return player.getHealth() <= 0;
+        return player.getHealth() <= USER_HEALTH_WHEN_REQUIRED_TO_LOSE_THE_GAME;
 
     }
 
