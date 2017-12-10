@@ -2,6 +2,8 @@ package pl.kamilpchelka.codecool.hangman.utils;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 
@@ -12,10 +14,13 @@ public class MusicPlayerImpl implements MusicPlayer {
     private static final int MAIN_MUSIC_CYCLE_COUNT = -1;
     MediaPlayer mediaPlayer;
 
+    Logger logger = LoggerFactory.getLogger(MusicPlayerImpl.class);
+
     @Override
     public void playMainThemeMusic() {
         URL resource = getClass().getClassLoader().getResource("sounds/theme_music.mp3");
         Media media = new Media(resource.toString());
+        logger.info(resource.toString());
         this.mediaPlayer = new MediaPlayer(media);
         this.mediaPlayer.setCycleCount(MAIN_MUSIC_CYCLE_COUNT);
         mediaPlayer.setVolume(MAIN_MUSIC_VOLUME);
