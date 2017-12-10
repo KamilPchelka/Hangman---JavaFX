@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #ffffff;"
@@ -59,7 +60,19 @@
         </HBox>
     </bottom>
     <right>
-        <Pane fx:id="hangmanPane" prefHeight="304.0" prefWidth="389.0" BorderPane.alignment="CENTER"/>
+        <Pane fx:id="hangmanPane" prefHeight="304.0" prefWidth="389.0" BorderPane.alignment="CENTER">
+            <Line endX="300" endY="300" startX="25" startY="300" stroke="brown" strokeWidth="3" visible="false"/>
+            <Line endX="25" endY="25" startX="25" startY="300" stroke="brown" strokeWidth="3" visible="false"/>
+            <Line endX="25" endY="25" startX="200" startY="25" stroke="brown" strokeWidth="3" visible="false"/>
+            <Line endX="200" endY="25" startX="200" startY="75" stroke="brown" strokeWidth="3" visible="false"/>
+            <Ellipse centerX="200" centerY="112" fill="white" radiusX="35" radiusY="35" stroke="black" strokeWidth="3"
+                     visible="false"/>
+            <Line endX="200" endY="200" startX="200" startY="150" stroke="black" strokeWidth="5" visible="false"/>
+            <Line endX="150" endY="225" startX="200" startY="175" stroke="black" strokeWidth="5" visible="false"/>
+            <Line endX="250" endY="225" startX="200" startY="175" stroke="black" strokeWidth="5" visible="false"/>
+            <Line endX="200" endY="200" startX="175" startY="275" stroke="black" strokeWidth="5" visible="false"/>
+            <Line endX="200" endY="200" startX="225" startY="275" stroke="black" strokeWidth="5" visible="false"/>
+        </Pane>
     </right>
     <left>
         <HBox prefHeight="276.0" prefWidth="10.0" BorderPane.alignment="CENTER"/>
@@ -315,7 +328,9 @@
                         <Button fx:id="mainMenuButton" onAction="#handleMainMenuButtonEvents" prefHeight="64.0"
                                 prefWidth="64.0" styleClass="home_button" stylesheets="@../css/Hangman.css">
                         </Button>
-                        <Pane prefHeight="83.0" prefWidth="130.0"/>
+                        <Pane prefHeight="83.0" prefWidth="130.0">
+
+                        </Pane>
                         <Label fx:id="labelWithCountryName" alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0"
                                prefWidth="415.0" textAlignment="CENTER">
                             <font>
