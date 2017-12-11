@@ -40,7 +40,11 @@ public class EndGameController {
 
     public void displayWinScene(Player player, String time) {
         endGameHeaderMsg.setText("You have won");
-        endGameBodyMsg.setText("Congratulations " + player.getName() + " !" + "\nIt took: " + time + "\nYour score: " + player.getScore());
+        endGameBodyMsg.setText(
+                String.format("Congratulations %s !", player.getName())
+                        + String.format("\nYou guessed after %d tries !", player.getGuessingTries())
+                        + String.format("\nYour score: %f", player.getScore())
+                        + String.format("\nIt took: %s", time));
         showLeaderBoard();
     }
 
